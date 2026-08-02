@@ -174,11 +174,15 @@ When you click stop it will finish the Current NavMesh build.
        
 ##### the application instantly closed / crashed when I tried to build a NavMesh?.
 
-* Older builds crashed with a native access violation inside FFXINAV.dll if "Apply NavMesh Settings" was not clicked before building (the DLL divides by the cell/tile sizes, which default to zero). The application now applies validated settings automatically before every build and sanity-checks the .obj file first. If a build still fails, check the debug window and Log.Bin for the reason.
+* Older builds crashed with a native access violation inside FFXINAV.dll if "Apply NavMesh Settings" was not clicked before building (the DLL divides by the cell/tile sizes, which default to zero). The application now applies validated settings automatically before every build and sanity-checks the .obj file first. If a build still fails, check the debug window or the session log for the reason.
+
+##### where are the log files?.
+
+* Each run of the application writes a plain-text log to the "logs" folder next to the exe, named like `logs\NavmeshBuilder_2026-08-02_14-30-00.log`. It contains everything shown in the on-screen debug window (settings applied, obj validation stats, build results, timings) plus any errors with their call sites. Logs older than 14 days are cleaned up automatically. (Older versions wrote to a file called log.bin — despite the name it was plain text; it is no longer used.)
 
 ##### when I select a zone from the list to build a collision obj file for nothing happens or I get an error?. 
    
-* open an issue and check what info is in log.bin.
+* open an issue and attach the newest file from the "logs" folder.
 
 ##### How do i deal with doors? the navmesh wont go past them?.
    
